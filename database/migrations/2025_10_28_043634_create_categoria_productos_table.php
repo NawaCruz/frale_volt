@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('categorias', function (Blueprint $table) {
-            $table->id('id_categoria'); // PK personalizada
+            $table->id('id_categoria_productos'); // PK personalizada
             $table->string('nombre')->unique()->comment('Nombre de la categoría');
             $table->timestamps(); // created_at y updated_at automáticos
         });

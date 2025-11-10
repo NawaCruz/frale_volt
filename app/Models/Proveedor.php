@@ -22,16 +22,6 @@ class Proveedor extends Model
         'representante'
     ];
 
-    /** Eventos del modelo cuando se elimina proveedor*/
-    protected static function booted()
-    {
-        static::deleting(function ($proveedor) {
-            // Asignar el proveedor por defecto a sus productos
-            Producto::where('proveedor_id', $proveedor->id_proveedor)
-                    ->update(['proveedor_id' => 1]); // 1 = “Proveedor Genérico”
-        });
-    }
-
     /** Relaciones */
 
     public function productos()

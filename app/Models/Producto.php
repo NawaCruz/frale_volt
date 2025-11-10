@@ -11,7 +11,7 @@ class Producto extends Model
 
     protected $table = 'productos';
     protected $primaryKey = 'id_producto';
-    public $timestamps = true;
+        public $timestamps = true;
 
     /**
      * Campos permitidos para asignación masiva.
