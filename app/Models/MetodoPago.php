@@ -11,7 +11,6 @@ class MetodoPago extends Model
 
     protected $table = 'metodo_pagos';
     protected $primaryKey = 'id_metodo_pago';
-    public $timestamps = true;
 
     protected $fillable = [
         'nombre'

@@ -8,29 +8,29 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('historial_compras', function (Blueprint $table) {
-            $table->id('id_historial_compras');
+        Schema::create('detalle_compras', function (Blueprint $table) {
+            $table->id('id_detalle_compra');
             $table->integer('cantidad');
+            $table->decimal('precio_unitario', 10, 2);
+            $table->decimal('subtotal', 10, 2);
 
-            // Foreign Keys
-            $table->foreignId('id_cliente')
-                ->nullable()
-                ->constrained('clientes', 'id_cliente')     // apunta a tabla clientes
-                ->restrictOnDelete()
+            // Foreign keys
+            $table->foreignId('id_compra')
+                ->constrained('compras', 'id_compra')     // apunta a tabla compras
+                ->cascadeOnDelete()
                 ->cascadeOnUpdate();
 
             $table->foreignId('id_producto')
-                ->nullable()
                 ->constrained('productos', 'id_producto')     // apunta a tabla productos
                 ->restrictOnDelete()
                 ->cascadeOnUpdate();
 
-            $table->timestamps();
+            $table->timestamps(); // created_at, updated_at
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('historial_compras');
+        Schema::dropIfExists('detalle_compras');
     }
 };

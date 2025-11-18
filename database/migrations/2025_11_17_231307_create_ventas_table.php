@@ -8,29 +8,28 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('historial_compras', function (Blueprint $table) {
-            $table->id('id_historial_compras');
-            $table->integer('cantidad');
+        Schema::create('ventas', function (Blueprint $table) {
+            $table->id('id_venta');
+            $table->decimal('total', 10, 2)->default(0);
+            $table->string('metodo_pago', 100); // efectivo, yape, etc.
 
-            // Foreign Keys
+            // Foreign keys
             $table->foreignId('id_cliente')
-                ->nullable()
                 ->constrained('clientes', 'id_cliente')     // apunta a tabla clientes
                 ->restrictOnDelete()
                 ->cascadeOnUpdate();
 
-            $table->foreignId('id_producto')
-                ->nullable()
-                ->constrained('productos', 'id_producto')     // apunta a tabla productos
+            $table->foreignId('id_user')
+                ->constrained('users', 'id_user')     // apunta a tabla users
                 ->restrictOnDelete()
                 ->cascadeOnUpdate();
 
-            $table->timestamps();
+            $table->timestamps(); // created_at, updated_at
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('historial_compras');
+        Schema::dropIfExists('ventas');
     }
 };

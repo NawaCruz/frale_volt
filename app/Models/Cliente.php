@@ -11,7 +11,6 @@ class Cliente extends Model
 
     protected $table = 'clientes';
     protected $primaryKey = 'id_cliente';
-    public $timestamps = true;
     /**
      * Campos que pueden asignarse de forma masiva (fillable).
      */
