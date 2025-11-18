@@ -20,7 +20,7 @@ return new class extends Migration
                 ->cascadeOnUpdate();
 
             $table->foreignId('id_user')
-                ->constrained('users', 'id_user')     // apunta a tabla users
+                ->constrained('users')     // apunta a tabla users
                 ->restrictOnDelete()
                 ->cascadeOnUpdate();
 

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->boolean('estado')->default(true); // abierto, cerrado, etc.
 
             $table->foreignId('id_user')
-                ->constrained('users', 'id_user')     // apunta a tabla categorias
+                ->constrained('users')     // apunta a tabla categorias
                 ->restrictOnDelete()
                 ->cascadeOnUpdate();
 

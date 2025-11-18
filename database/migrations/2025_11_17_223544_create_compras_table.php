@@ -13,7 +13,7 @@ return new class extends Migration
             $table->decimal('total', 10, 2)->default(0);
 
             $table->foreignId('id_user')
-                ->constrained('users', 'id_user')     // apunta a tabla users
+                ->constrained('users')     // apunta a tabla users
                 ->restrictOnDelete()
                 ->cascadeOnUpdate();
 
